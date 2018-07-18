@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('{any}', function () {
+    $now = \Carbon\Carbon::now();
+    return view('welcome')
+    ->with('now', $now);
+})->where('any', '(.*)');;
